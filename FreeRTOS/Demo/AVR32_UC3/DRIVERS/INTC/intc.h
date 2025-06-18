@@ -52,7 +52,7 @@
 #define AVR32_INTC_MAX_NUM_IRQS_PER_GRP             32
 
 //! Number of interrupt priority levels.
-#define AVR32_INTC_NUM_INT_LEVELS                   (1 << AVR32_INTC_IPR0_INTLEV_SIZE)
+#define AVR32_INTC_NUM_INT_LEVELS                   (1 << AVR32_INTC_IPR_INTLEV_SIZE)
 
 /*! \name Interrupt Priority Levels
  */
