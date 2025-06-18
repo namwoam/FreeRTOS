@@ -108,7 +108,7 @@ __int_handler _get_interrupt_handler(unsigned int int_lev)
   // ICR3 is mapped first, ICR0 last.
   // Code in exception.S puts int_lev in R12 which is used by AVR32-GCC to pass
   // a single argument to a function.
-  unsigned int int_grp = (&AVR32_INTC.icr3)[INT3 - int_lev];
+  unsigned int int_grp = (&AVR32_INTC.icr)[INT3 - int_lev];
   unsigned int int_req = AVR32_INTC.irr[int_grp];
 
   // As an interrupt may disappear while it is being fetched by the CPU
@@ -196,5 +196,5 @@ void INTC_register_interrupt(__int_handler handler, unsigned int irq, unsigned i
   // system.
   // NOTE: The _intx functions are intermediate assembly functions between the
   // core interrupt system and the user interrupt handler.
-  AVR32_INTC.ipr[int_grp] = ipr_val[int_lev & (AVR32_INTC_IPR0_INTLEV_MASK >> AVR32_INTC_IPR0_INTLEV_OFFSET)];
+  AVR32_INTC.ipr[int_grp] = ipr_val[int_lev & (AVR32_INTC_IPR_INTLEV_MASK >> AVR32_INTC_IPR_INTLEV_OFFSET)];
 }
